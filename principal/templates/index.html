@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{%block titulo%}listado de contacto {%endblock titulo%}</title>
+</head>
+<body>
+{% block cuerpo %}
+<h1>template de listado</h1>
+<table border="2">
+    <thead>
+      <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Correo</th>
+          <th>OPCIONES</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for persona in object_list  %}
+      <tr>
+        <td>{{ persona.nombre }}</td>
+        <td>{{ persona.apellidos}}</td>
+        <td>{{ persona.correo}}</td>
+        <td><a href="{% url 'editar_persona' persona.id %}">EDITAR</a> <a href="{% url 'eliminar_persona' persona.id %}">ELIMINAR</a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock cuerpo %}
+</body>
+</html>
